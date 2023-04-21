@@ -1,19 +1,22 @@
 const mysql = require('mysql2'); /* Import and require mysql2*/
+const inquirer = require('inquirer');
+const consoleTable = require('console.table');
+
+
 
 // Connect to SQL server using mysql package.
-const connection = mysql.createConnection(
+const db = mysql.createConnection(
     {
         host: 'localhost',
         // Add MySQL username,
         user: 'root',
         // Add MySQL password here
         password: 'Prospect#20',
-        database: 'employers_db'
-    });
+        database: 'employee_tracker'
+    },
+    // Indicates successful connection to the database
+    console.log(`Connected to the employee_tracker database.`)
+);
 
-connection.connect(function (err) {
-    console.log(`Connected to the employers_db database.`)
-    if (err) throw err;
-});
-
-module.exports = connection;
+// Exporting the connection for use in other files
+module.exports = db;
