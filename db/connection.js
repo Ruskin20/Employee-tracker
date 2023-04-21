@@ -1,7 +1,5 @@
 const mysql = require('mysql2'); /* Import and require mysql2*/
-const inquirer = require('inquirer');
-const consoleTable = require('console.table');
-
+require('dotenv').config();
 
 
 // Connect to SQL server using mysql package.
@@ -11,7 +9,7 @@ const db = mysql.createConnection(
         // Add MySQL username,
         user: 'root',
         // Add MySQL password here
-        password: 'Prospect#20',
+        password: process.env.DB_PASSWORD,
         database: 'employee_tracker'
     },
     // Indicates successful connection to the database
